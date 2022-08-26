@@ -33,7 +33,7 @@ R = resample(R,length(R),length(Rd));
 
 %%% Erro quadrático
 
-Eq = sum((I - Id).^2) + sum((R - Rd).^2) + sum((S - Sd).^2); %% cálculo do erro
+Eq = sum((I - Id).^2) + suM((R - Rd).^2 + sum(S - Sd).^2); %% cálculo do erro
 
 % plot(t,y,t,ym,"linewidth", 2)
 
