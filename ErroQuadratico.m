@@ -5,7 +5,8 @@ function [Eq] = ErroQuadraticoSIR(X,Sd, Rd,Id)
 % y - saída real
 % t - tempo real
 % X = [Km pm];
-
+global beta;
+global r;
 beta = X(1);
 r = X(2);
 
@@ -18,7 +19,7 @@ i0 = 1;
 r0 = 0;
 s0 = N - i0;
 
-options = simset('solver','ode45','MaxStep',0.01,'InitialStep',0.01,'ReturnWorkspaceOutputs', 'on');
+options = simset('solver','ode45','MaxStep',0.1,'InitialStep',0.1,'ReturnWorkspaceOutputs', 'on');
 simOut = sim("SimulacaoSIR.slx",1000,options);
 
 %%% Saida do modelo
@@ -33,8 +34,7 @@ R = resample(R,length(R),length(Rd));
 
 %%% Erro quadrático
 
-Eq = sum((I - Id).^2) + sum((R - Rd).^2) + sum((S - Sd).^2); %% cálculo do erro
-
+Eq = sum((I - Id).^2) + sum((R - Rd).^2) + sum((S - Sd).^2) %% cálculo do erro
 % plot(t,y,t,ym,"linewidth", 2)
 
 end

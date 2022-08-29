@@ -21,6 +21,6 @@ ym = lsim(G,u,t);        % y teorico
 %%% Erro quadrático - comparar com os dados experimentais
 
 Eq = sum((y - ym).^2);   % cálculo do erro
-
+disp(Eq)
 
 end
